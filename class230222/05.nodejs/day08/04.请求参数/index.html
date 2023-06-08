@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+    1. query - querystring
+      - 概念  
+        查询字符串
+      
+      - 常用于 GET 请求
+      
+      - ajax
+        xhr.open('GET', '/xxx?username=admin&password=123456')
+      
+      - axios
+        
+        axios.get('/xxx?username=admin&password=123456')
+        
+        axios.get('/xxx', {
+          params: {
+            username: 'admin',
+            password: 123456
+          }
+        })
+
+        axios({
+          method: 'GET',
+          url: '/xxx',
+          params: {
+            username: 'admin',
+            password: 123456
+          }
+        })
+
+        - nodejs - express
+          req.query 获取查询字符串参数
+
+    2. path
+      - 概念路径参数
+      
+      - ajax
+        xhr.open('GET', '/xxx/123')
+
+      - axios
+        axios.get('/xxx/123')
+
+        axios({
+          method: 'GET',
+          url: '/xxx/123'
+        })
+
+      - nodejs - express
+          req.params 获取路径参数
+
+    3. body
+      - 概念请求体参数
+
+      - 常用于 POST、PUT、PATCH 请求
+
+      - ajax
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify({ username: 'admin' }))
+      
+      - axios
+        axios.post('/xxx', { username: 'admin' })
+
+        axios({ 
+          method: 'POST',
+          url: '/xxx',
+          data: { username: 'admin' }
+        })
+
+      - nodejs - express
+          req.body 获取请求体参数
+
+      http://39.98.123.211:8510/swagger-ui.html#!/
+   -->
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>注册页面</title>
+  </head>
+  <body>
+    <h1>注册页面</h1>
+    <form action="/register" method="POST">
+      <label>用户名</label>
+      <!-- 
+        name属性：当你提交表单参数名称就是name
+       -->
+      <input type="text" name="username" />
+      <br />
+      <label>密码</label>
+      <input type="password" name="password" />
+      <br />
+      <label>确认密码</label>
+      <input type="password" name="rePassword" />
+      <br />
+      <button type="submit">注册</button>
+    </form>
+  </body>
+</html>

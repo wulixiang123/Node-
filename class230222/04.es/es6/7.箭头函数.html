@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      "use strict";
+
+      const fn1 = (a, ...args) => {
+        console.log(a, args);
+      };
+      fn1(1, 2, 3, 4);
+
+      // 简写：函数参数只有一个，可以省略()
+      const fn2 = (a) => {
+        console.log(a);
+      };
+
+      // 简写：函数只有一条语句，可以省略{}，这条语句的返回值就是整个箭头函数的返回值
+      const fn3 = (a) => a++;
+      console.log(fn3(1));
+
+      // 箭头函数没有显示原型属性，不能被new调用
+      console.log(fn3.prototype, fn3.__proto__ === Function.prototype);
+      // new fn3(); // fn3 is not a constructor
+
+      // 箭头函数没有arguments
+      const fn4 = (...rest) => {
+        console.log(rest);
+        // console.log(arguments); // Uncaught ReferenceError: arguments is not defined
+      };
+      fn4(1, 2, 3, 4);
+
+      // 箭头函数没有自己的this指向，this指向为外层函数的this(离它最近包裹它函数的this)
+      // function foo1() {
+      //   function foo2() {
+      //     const foo3 = () => {
+      //       console.log(this); // window
+      //     };
+      //     foo3();
+      //   }
+      //   foo2();
+      // }
+      // foo1.call({ name: "jack" });
+
+      // function foo1() {
+      //   const foo2 = () => {
+      //     const foo3 = () => {
+      //       console.log(this); // { name: "jack" }
+      //     };
+      //     foo3();
+      //   };
+      //   foo2();
+      // }
+      // foo1.call({ name: "jack" });
+      
+
+      const foo1 = () => {
+        const foo2 = () => {
+          const foo3 = () => {
+            console.log(this); // window
+          };
+          foo3();
+        };
+        foo2();
+      };
+      foo1.call({ name: "jack" });
+    </script>
+  </body>
+</html>

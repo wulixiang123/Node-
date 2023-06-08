@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>登录</title>
+  </head>
+  <body>
+    <button class="btn">登录</button>
+    <a href="./user.html">个人中心页</a>
+    <script src="/axios.min.js"></script>
+    <script>
+      document.querySelector(".btn").onclick = async function () {
+        const res = await axios.post("http://localhost:3000/login", {
+          username: "admin",
+          password: "111111",
+        });
+        console.log(res);
+      };
+    </script>
+  </body>
+</html>

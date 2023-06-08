@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        Array.prototype上的方法：
+          pop  删除数组最后一项元素，返回值就是删除元素
+          push 给数组最后添加一个元素，返回值就是新数组长度
+          shift 删除数组第一项元素，返回值就是删除元素
+          unshift 给数组最前面添加一个元素，返回值就是新数组长度
+          splice(index, number[, a, b, c, ...]) 操作数组，可以完成添加、修改、删除功能，返回值删除元素组成的数组
+            splice(index, number) 删除功能
+            splice(index, 0, a, b) 添加功能
+            splice(index, 1, a) 修改功能
+          slice 截取数组，返回值截取这段数组
+          reverse 反转数组（影响原数组），返回值反转的数组
+          sort 排序（影响原数组），返回值排序后的数组
+          concat 将多个数组拼接成一个新数组，返回值新数组
+          join 将数组中的值按照某个符号拼接成一个字符串，返回值字符串
+
+          indexOf 判断是否包含某个元素，返回值这个元素下标（没有找到-1）
+          includes 判断是否包含某个元素，返回值boolean
+
+          forEach 遍历数组的每一项元素
+          map 遍历数组的每一项元素（不影响原数组），返回一个新数组，新数组长度不变，值变
+          filter 遍历数组的每一项元素（不影响原数组），返回一个新数组，新数组长度变(减少)，值不变
+          reduce 长度变，值变
+            累加（计算总价）
+          find 查找第一个符合条件的元素（找到了不找了），返回值找到的这项元素（没有找到undefined）
+          findIndex 查找第一个符合条件的元素的下标（找到了不找了），返回值找到的这项元素的下标（没有找到-1）
+          some 只要有一个true就返回true，只有所有是false才返回false
+          every 只有所有都是true才是true，只要有一个是false就返回false
+      */
+
+      const arr = [1, 2, 3, 4, 5, 6, 7];
+      const arr1 = arr.map((item) => item + 1);
+      console.log(arr1);
+      // 返回true，保留，返回false，过滤
+      const arr2 = arr.filter((item) => item > 4);
+      console.log(arr2);
+
+      const goodsList = [
+        {
+          skuName: "iPhone14",
+          price: 7000,
+          skuNum: 5,
+        },
+        {
+          skuName: "外星人电脑",
+          price: 20000,
+          skuNum: 100,
+        },
+        {
+          skuName: "KFC",
+          price: 50,
+          skuNum: 30,
+        },
+      ];
+
+      // goodsList.reduce((previous, current, index, array) => {
+      const totalPrice = goodsList.reduce((p, c) => {
+        /*
+          previous 初始化值是0（看第二个参数），上一次函数调用的返回值
+          current 就是遍历的item
+          index 就是遍历元素的下标
+          array 整个数组
+        */
+        return p + c.price * c.skuNum;
+      }, 0);
+
+      console.log(totalPrice);
+    </script>
+  </body>
+</html>

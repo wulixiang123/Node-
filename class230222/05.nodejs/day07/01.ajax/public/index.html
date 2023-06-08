@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ajax</title>
+  </head>
+  <body>
+    <h1>ajax页面</h1>
+    <button id="btn1">发送GET请求</button>
+    <button id="btn2">发送POST请求</button>
+    <button id="btn3">发送PUT请求</button>
+    <button id="btn4">发送DELETE请求</button>
+
+    <button id="btn5">发送请求，测试超时</button>
+    <script>
+      // 1. 发送 GET 请求
+      document.getElementById("btn1").onclick = function () {
+        // 发送 ajax 请求
+        // 1. 创建 xhr 对象(所有发送请求的方法都在这个对象上)
+        const xhr = new XMLHttpRequest();
+
+        // 2. 设置请求信息（请求方式、请求地址、请求参数、请求头内容）
+        // xhr.open("GET", "http://localhost:3000/test1"); // 完整请求地址
+        // xhr.open(请求方式, 请求地址)
+        xhr.open("GET", "/test1?username=admin&password=123456"); // 简写请求地址：/ 自动补全当前页面的服务器地址（简写必须通过自己服务器访问页面）
+        // 3. 发送请求
+        xhr.send();
+
+        // 4. 接受服务器的响应
+        // 监听 readystate 的变化的事件
+        // xhr.onreadystatechange = function () {
+        //   /*
+        //     readystate
+        //       0 表示 XMLHttpRequest 实例已经生成，但是 open() 方法还没有被调用
+        //         当你 new XMLHttpRequest(); 生成 xhr 对象，xhr.readyState 的值就是 0
+
+        //       1 表示 send() 方法还没有被调用，仍然可以使用 setRequestHeader()，设定 HTTP请求的头信息
+        //         当你调用 xhr.open 方法，0 -> 1
+
+        //       2 表示 send() 方法已经执行，并且头信息和状态码已经收到
+        //         当你调用 xhr.send 此时会发送请求，等接受到部分服务器的响应数据(响应首行和响应头，没有响应体)时。 1 -> 2
+
+        //       3 表示正在接收服务器传来的 body 部分的数据
+        //         接受到部分响应体数据（如果响应的数据比较小，就全部接受了，如果响应的数据比较大，就接受部分） 2 -> 3
+
+        //       4 表示服务器数据已经完全接收，或者本次接收已经失败了
+        //         接受完所有响应体数据 3 -> 4
+
+        //     变化情况
+        //       0 -> 1
+        //       1 -> 2
+        //       2 -> 3
+        //       3 -> 4
+        //       一共有4种变化
+        //   */
+        //   // console.log("事件触发了", xhr.readyState);
+        //   // console.log(xhr.responseText);
+        //   if (xhr.readyState === 4) {
+        //     // 代表接受完所有响应体数据，才能去使用
+        //     // console.log("接受完所有数据了", xhr.responseText); // 服务器响应的数据
+        //     // console.log("接受完所有数据了", JSON.parse(xhr.responseText)); // 服务器响应的数据
+        //     // 请求成功或请求失败都会进来, 如何判断请求成功/失败？看响应状态码 xhr.status
+        //     if (xhr.status >= 200 && xhr.status < 300) {
+        //       // 200 - 299
+        //       // 请求成功
+        //       console.log("接受完所有数据了", JSON.parse(xhr.responseText)); // 服务器响应的数据
+        //     } else {
+        //       // 请求失败
+        //       alert("请求失败了");
+        //     }
+        //   }
+        // };
+
+        xhr.onload = function () {
+          // 表示服务器数据已经完全接收，或者本次接收已经失败了才触发
+          // console.log("load事件触发了");
+          // console.log(xhr.responseText);
+          if (xhr.status >= 200 && xhr.status < 300) {
+            // 200 - 299
+            // 请求成功
+            console.log("接受完所有数据了", JSON.parse(xhr.responseText)); // 服务器响应的数据
+          } else {
+            // 请求失败
+            alert("请求失败了");
+          }
+        };
+      };
+
+      // 2. 发送 POST 请求
+      document.getElementById("btn2").onclick = function () {
+        // // 1. 创建xhr对象
+        // const xhr = new XMLHttpRequest();
+        // // 2. 通过xhr对象设置请求信息（请求地址、请求方式、请求参数、请求头等）
+        // xhr.open("POST", "/test1");
+        // // form表单参数格式
+        // // 设置请求头
+        // xhr.setRequestHeader(
+        //   "Content-Type",
+        //   "application/x-www-form-urlencoded"
+        // );
+        // // 3. 通过xhr对象发送请求
+        // xhr.send("username=admin&password=123456");
+        // // 4. 通过xhr对象绑定事件，接受服务器响应的数据
+        // xhr.onload = function () {
+        //   if (xhr.status >= 200 && xhr.status < 300) {
+        //     console.log(xhr.responseText);
+        //   } else {
+        //     alert("请求失败了");
+        //   }
+        // };
+
+        // 1. 创建xhr对象
+        const xhr = new XMLHttpRequest();
+        // 2. 通过xhr对象设置请求信息（请求地址、请求方式、请求参数、请求头等）
+        xhr.open("POST", "/test1");
+        // json参数格式
+        // 设置请求头
+        xhr.setRequestHeader("Content-Type", "application/json");
+        // 3. 通过xhr对象发送请求
+        xhr.send(JSON.stringify({ username: "admin", password: 123456 }));
+        // 4. 通过xhr对象绑定事件，接受服务器响应的数据
+        xhr.onload = function () {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            console.log(xhr.responseText);
+          } else {
+            alert("请求失败了");
+          }
+        };
+      };
+
+      // 3. 发送 PUT 请求
+      document.getElementById("btn3").onclick = function () {
+        const xhr = new XMLHttpRequest();
+        xhr.open("PUT", "/test1");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(JSON.stringify({ username: "admin", password: 123 }));
+        xhr.onload = function () {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            console.log(xhr.responseText);
+          } else {
+            alert("请求失败");
+          }
+        };
+      };
+
+      // 4. 发送 DELETE 请求
+      document.getElementById("btn4").onclick = function () {
+        const xhr = new XMLHttpRequest();
+        xhr.open("DELETE", "/test1?username=admin&password=123456");
+        xhr.send();
+        xhr.onload = function () {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            console.log(xhr.responseText);
+          } else {
+            alert("请求失败");
+          }
+        };
+      };
+
+      // 5. 发送请求，如果请求超过5s还没回来，就不要了（取消掉）
+      // 客户端需要设置请求超时时间，超过5s，就取消请求
+      document.getElementById("btn5").onclick = function () {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "/test2");
+        xhr.send();
+
+        xhr.onload = function () {
+          clearTimeout(timeId);
+          if (xhr.status >= 200 && xhr.status < 300) {
+            console.log(xhr.responseText);
+          } else {
+            alert("请求失败了");
+          }
+        };
+
+        const timeId = setTimeout(() => {
+          // 取消请求
+          xhr.abort();
+          alert("网络超时，请连接wifi试试");
+        }, 5000);
+      };
+    </script>
+  </body>
+</html>

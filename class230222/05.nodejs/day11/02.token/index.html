@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button class="btn1">登录</button>
+    <button class="btn2">访问用户数据</button>
+    <!-- 必须先引入axios，在引入request -->
+    <script src="./axios.min.js"></script>
+    <script src="./request.js"></script>
+    <script>
+      let token = "";
+
+      document.querySelector(".btn1").onclick = async function () {
+        // 将登录的token存储起来
+        token = await request({
+          url: "/login",
+        });
+        console.log(token);
+      };
+
+      document.querySelector(".btn2").onclick = async function () {
+        // 下次发送请求，携带token
+        const user = await request({
+          url: "/user",
+          // headers: {
+          //   token,
+          // },
+        });
+        console.log(user);
+      };
+    </script>
+  </body>
+</html>

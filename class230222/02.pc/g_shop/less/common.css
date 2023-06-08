@@ -1,0 +1,36 @@
+.box-shadow {
+  box-shadow: 3px 3px 4px #777;
+}
+.max-w {
+  width: 1200px;
+  margin: 0 auto;
+}
+.flex {
+  display: flex;
+}
+.f-c {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.f-jc {
+  display: flex;
+  justify-content: center;
+}
+.f-ja {
+  display: flex;
+  justify-content: space-around;
+}
+.f-ac {
+  display: flex;
+  align-items: center;
+}
+.fb {
+  display: flex;
+  justify-content: space-between;
+}
+.els {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

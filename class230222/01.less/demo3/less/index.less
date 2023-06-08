@@ -1,0 +1,29 @@
+@border-color: #ccc;
+
+// 定义混合
+// .border {
+//   border-bottom: 1px solid @border-color;
+// }
+// 混合的参数
+// .border (@position) {
+//   border-@{position}: 1px solid @border-color;
+// }
+
+// 参数可以有n个
+// .border (@position, @width) {
+//   border-@{position}: @width solid @border-color;
+// }
+
+// 参数可以有默认值（参数可传可不传）
+.border (@position, @width: 1px) {
+  border-@{position}: @width solid @border-color;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  // 使用混合
+  // .border;
+  // .border(bottom);
+  .border(top, 2px);
+}

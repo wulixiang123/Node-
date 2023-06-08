@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button class="btn">发送请求</button>
+    <script>
+      // 使用jsonp方案解决跨域
+      // 特点：1. 只能支持 GET 请求 2. 兼容性很好
+      document.querySelector(".btn").onclick = function () {
+        // 1. 创建script标签
+        const script = document.createElement("script");
+        // 2. 指定回调函数（将来一旦js请求回来了，自动触发回调函数）
+        window.getData = (data) => {
+          // 最终目的：需要在回调函数中得到响应的内容
+          console.log(data);
+        };
+        // 3. 给script设置src属性
+        // 服务器响应给我的js代码：getData({ code: 200, ... })
+        script.src = "http://127.0.0.1:3000/testJSONP?callback=getData";
+        // 4. 将script添加到页面生效
+        document.body.appendChild(script);
+      };
+
+      // document.querySelector(".btn").onclick = function () {
+      //   /*
+      //     跨域错误：
+      //       access to XMLHttpRequest at 'http://127.0.0.1:3000/testJSONP' from origin 'http://127.0.0.1:5500' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+      //   */
+      //   const xhr = new XMLHttpRequest();
+      //   xhr.open("GET", "http://127.0.0.1:3000/testJSONP");
+      //   xhr.send();
+      //   xhr.onload = function () {
+      //     if (xhr.status >= 200 && xhr.status < 300) {
+      //       console.log(xhr.responseText);
+      //     } else {
+      //       console.log("请求失败了");
+      //     }
+      //   };
+      // };
+    </script>
+  </body>
+</html>

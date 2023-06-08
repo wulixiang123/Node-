@@ -1,0 +1,40 @@
+{
+  "name": "12.复习dev环境",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "webpack serve --config ./config/webpack.dev.js",
+    "build": "webpack --config ./config/webpack.prod.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.21.8",
+    "@babel/preset-env": "^7.21.5",
+    "babel-loader": "^9.1.2",
+    "css-loader": "^6.7.4",
+    "eslint": "^7.32.0 || ^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-webpack-plugin": "^4.0.1",
+    "html-webpack-plugin": "^5.5.1",
+    "less": "^4.1.3",
+    "less-loader": "^11.1.0",
+    "mini-css-extract-plugin": "^2.7.6",
+    "postcss": "^8.4.23",
+    "postcss-loader": "^7.3.0",
+    "postcss-preset-env": "^8.4.1",
+    "style-loader": "^3.3.3",
+    "webpack": "^5.83.1",
+    "webpack-cli": "^5.1.1",
+    "webpack-dev-server": "^4.15.0"
+  },
+  "browserslist": [
+    "> 0.1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

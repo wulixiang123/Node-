@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 2. Proxy
+      const person = {
+        name: "jack",
+        age: 18,
+      };
+
+      // 对person对象上所有属性都生效，包括新增属性
+      // new Proxy(target, handler)
+      const proxy = new Proxy(person, {
+        get(target, propKey, receiver) {
+          /*
+            target 代理目标对象 person
+            propKey 读取某个属性名
+            receiver 代理返回对象 proxy
+          */
+          console.log("get");
+          console.log(target, propKey, receiver);
+          return target[propKey];
+        },
+        set(target, propKey, value, receiver) {
+          console.log("set");
+
+          target[propKey] = value;
+        },
+      });
+
+      console.log(proxy);
+      proxy.name; // 触发get
+      proxy.name = "rose"; // 触发set
+
+      proxy.age; // 触发get
+      proxy.age = 19; // 触发set
+
+      proxy.sex = "男"; // 触发set
+      proxy.sex; // 触发get
+
+      delete person.name;
+
+      console.log(person);
+
+      // Reflect.deleteProperty(person, "age");
+
+      // console.log(person);
+
+      console.log("age" in person);
+
+      console.log(Reflect.has(person, "age"));
+
+      // 1. Object.defineProperty
+      // 问题：需要将所有属性都要定义一遍，新增属性也需要定义一遍，太麻烦
+      // const person = {
+      //   // name: "jack",
+      //   age: 18,
+      //   _name: "jack", // 代表私用
+      // };
+
+      // Object.defineProperty(person, "name", {
+      //   get() {
+      //     console.log("get");
+      //     return this._name;
+      //   },
+      //   set(newVal) {
+      //     console.log("set");
+      //     this._name = newVal;
+      //   },
+      // });
+
+      // // person.name;
+      // // person.name = "rose";
+
+      // person.age;
+      // person.age++;
+    </script>
+  </body>
+</html>

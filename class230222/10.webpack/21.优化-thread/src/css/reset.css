@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/*
+  module.exports = `
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  `
+*/

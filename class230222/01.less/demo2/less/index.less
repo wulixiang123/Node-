@@ -1,0 +1,29 @@
+// 定义变量
+@red-color-1: #c81623;
+@red-color-2: #e1251b;
+@red-color-3: #e33333;
+
+@w: width;
+
+@c: .box1;
+
+@{c} {
+  @{w}: 100px;
+  height: 100px;
+  // 使用变量
+  background-color: @red-color-1;
+}
+
+.box2 {
+  width: 100px;
+  height: 100px;
+  // 使用变量
+  background-color: @red-color-2;
+}
+
+.box3 {
+  width: 100px;
+  height: 100px;
+  // 使用变量
+  background-color: @red-color-3;
+}

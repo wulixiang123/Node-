@@ -1,0 +1,19 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "文章标题~~~",
+      "author": "文章作者~~"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "文章评论~~~",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

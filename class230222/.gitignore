@@ -1,0 +1,17 @@
+node_modules/
+
+05.nodejs/day04/05.crawler/assets/
+05.nodejs/day04/05.crawler/data/
+
+05.nodejs/day04/06.movie/public/assets/
+05.nodejs/day04/06.movie/data/
+
+
+05.nodejs/day05/01.movie/public/assets/
+05.nodejs/day05/01.movie/data/
+
+05.nodejs/day06/01.movie/public/assets/
+
+05.nodejs/day06/02.movie/public/assets/
+
+dist

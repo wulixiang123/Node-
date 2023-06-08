@@ -1,0 +1,82 @@
+@import "./reset.less";
+@import "./variable.less";
+@import "./mixins.less";
+@import "./common.less";
+
+// #app {
+//   width: 100%;
+//   height: 100%;
+
+//   .header {
+//     height: 60px;
+//     background-color: @primary-color-1;
+//   }
+
+//   .main {
+//     height: calc(100% - 60px);
+//     display: flex;
+//     .sidebar {
+//       width: 150px;
+//       background-color: @primary-color-2;
+//       height: 100%;
+//     }
+//     .main-wrap {
+//       flex: 1;
+//       height: 100%;
+
+//       .content {
+//         min-height: calc(100% - 100px);
+//         background-color: @primary-color-3;
+//       }
+
+//       .footer {
+//         height: 100px;
+//         background-color: @primary-color-4;
+//       }
+//     }
+//   }
+// }
+
+/*
+  问题：
+    1. 生成css体积比较大（选择器太多了）
+    2. css解析性能不好
+      扩展：
+        CSS选择器是从右往左解析
+        选择器性能开销：id > class 
+*/
+
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+.header {
+  height: 60px;
+  background-color: @primary-color-1;
+}
+
+.main {
+  height: calc(100% - 60px);
+  display: flex;
+}
+
+.sidebar {
+  width: 150px;
+  background-color: @primary-color-2;
+  height: 100%;
+}
+.main-wrap {
+  flex: 1;
+  height: 100%;
+}
+
+.content {
+  min-height: calc(100% - 100px);
+  background-color: @primary-color-3;
+}
+
+.footer {
+  height: 100px;
+  background-color: @primary-color-4;
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        async 函数：一定要配合promise一起使用
+      */
+
+      // 异步函数
+      console.log(1);
+      async function asyncFn() {
+        console.log(2);
+        /*
+          await 等待右边promise对象的状态发生变化
+          await 下面代码会被异步调用
+            当右边promise对象是pending状态 -> 等待（暂停）
+            当右边promise对象变成成功状态 -> 继续执行await下面代码
+            当右边promise对象变成失败状态 -> 会直接退出async函数
+
+          await返回值就是右边promise内部成功结果值
+        */
+        const result = await new Promise((resolve, reject) => {
+          resolve(123);
+        });
+
+        console.log(result);
+
+        /*
+          await 右边是promise对象才会有等待（暂停）效果，如果右边不是promise对象，当做成功的promise对象看待，不会等待（暂停）
+        */
+        // await console.log("hello test");
+
+        console.log(3);
+
+        return 456;
+      }
+      /*
+        调用async函数，内部代码会同步执行
+        调用async函数，返回值一定是一个promise
+          状态
+            当async函数内部代码没有全部执行完，状态就是pending
+            当async函数内部代码全部执行完了（并且没有错误），状态就是resolved
+            当async函数内部代码报错了或接受到失败状态promise对象，状态就是rejected
+          结果值
+            成功状态结果值看函数return的结果
+            失败状态结果值
+              报错 -> 错误原因
+              失败状态promise对象 -> 失败状态promise对象结果值（失败原因）
+      */
+      const result = asyncFn();
+      console.log(result); // undefined
+      console.log(4);
+    </script>
+  </body>
+</html>

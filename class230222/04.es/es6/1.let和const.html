@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul class="list">
+      <li>111</li>
+      <li>222</li>
+      <li>333</li>
+    </ul>
+    <script>
+      // var 变量的变量有变量提升
+      console.log(a); // undefined
+      // var 定义的变量可以重复声明
+      var a = 1;
+      var a = 2;
+      /*
+        let 声明变量的特点：
+          1. 不能重复声明
+          2. 没有变量声明提升
+          3. 生成块级作用域
+            全局作用域
+            函数作用域
+            块级作用域
+
+        const 声明变量的特点：
+          1. 不能重复声明
+          2. 没有变量声明提升
+          3. 生成块级作用域
+            全局作用域
+            函数作用域
+            块级作用域
+          4. 定义变量的值不能被修改（常量）
+      */
+      // console.log(b); // Uncaught ReferenceError: Cannot access 'b' before initialization
+
+      let b = 3;
+      // let b = 4;
+
+      if (false) {
+        var c = 5;
+      }
+      console.log(c); // undefined
+
+      // if、for循环、while、switch case
+      if (false) {
+        let d = 6;
+        d++;
+        var e = 7;
+      }
+      // console.log(d); // Uncaught ReferenceError: d is not defined
+      console.log(e); // undefined
+
+      const f = 8;
+      // f++; // Uncaught TypeError: Assignment to constant variable.
+
+      const obj = {}; // 引用类型存储的是地址值
+      obj.a = 1;
+      console.log(obj);
+
+      // obj = { b: 2 }; // Uncaught TypeError: Assignment to constant variable.
+
+      function fn() {
+        // debugger;
+        const a = 1;
+      }
+      fn();
+
+      let g = 1;
+      if (true) {
+        // console.log(g); // 暂存性死区（报错）
+        let g = 2;
+      }
+
+      const liElList = document.querySelectorAll(".list li");
+
+      // for (var i = 0; i < liElList.length; i++) {
+      //   const liEl = liElList[i];
+      //   liEl.onclick = function () {
+      //     console.log(i);
+      //   };
+      // }
+
+      // for (var i = 0; i < liElList.length; i++) {
+      //   const liEl = liElList[i];
+      //   liEl.index = i;
+      //   liEl.onclick = function () {
+      //     console.log(this.index);
+      //   };
+      // }
+
+      for (let i = 0; i < liElList.length; i++) {
+        const liEl = liElList[i];
+        liEl.onclick = function () {
+          console.log(i);
+        };
+      }
+    </script>
+  </body>
+</html>

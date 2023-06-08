@@ -1,0 +1,16 @@
+doctype html 
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title 硅谷电影-首页
+  body
+    h1 硅谷电影-首页
+    ul 
+      //- #{xxx} 用来使用传入的数据
+      li #{movies[0].name}
+      li #{movies[1].name}
+      li -----------------
+      each item in movies 
+        li #{item.name}

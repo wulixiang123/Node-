@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        可选链操作符
+      */
+
+      const person1 = {
+        a: {
+          b: {
+            c: {
+              d: 111,
+            },
+          },
+        },
+      };
+
+      const person2 = {
+        a: {},
+      };
+
+      console.log(person1.a.b.c.d);
+
+      // if (person2.a && person2.a.b && person2.a.b.c) {}
+
+      console.log(person2?.a?.b?.c?.d);
+
+      // const categoryList = [
+      //   {
+      //     categoryName: "手机",
+      //     children: [
+      //       {
+      //         categoryName: "手机通信",
+      //         children: [
+      //           {
+      //             categoryName: "游戏手机",
+      //           },
+      //         ],
+      //       },
+      //     ],
+      //   },
+      // ];
+    </script>
+  </body>
+</html>

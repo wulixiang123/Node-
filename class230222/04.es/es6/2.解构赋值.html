@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const person = {
+        name: "jack",
+        age: 18,
+        hobby: "rose",
+        address: "泰坦尼克号",
+        wife: {
+          wifeName: "rose",
+          wifeAge: 16,
+        },
+      };
+
+      // const name = person.name;
+      // const age = person.age;
+      // const hobby = person.hobby;
+      // const address = person.address;
+      // const sex = person.sex;
+
+      // 对象解构赋值(看名称)
+      const {
+        wife: { wifeName, wifeAge },
+        name,
+        age,
+        hobby,
+        address,
+        sex,
+      } = person;
+
+      console.log(name, age, hobby, address, sex, wifeName, wifeAge);
+
+      const arr = [1, 2, 3, 4, 5];
+      // 数组解构赋值(看顺序/位置)
+      const [a, b, c] = arr;
+
+      console.log(a, b, c);
+
+      // 函数参数解构赋值
+      function fn({ name, age }, [a, b]) {
+        console.log(name, age, a, b);
+      }
+
+      fn(person, arr);
+    </script>
+  </body>
+</html>

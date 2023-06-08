@@ -1,0 +1,41 @@
+.header {
+  background-color: pink;
+  .title {
+    color: #fff;
+  }
+}
+
+.box1 {
+  width: 150px;
+  height: 100px;
+  background-image: url("../images/1.jpeg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.box2 {
+  width: 100px;
+  height: 100px;
+  background-image: url("../images/2.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.box3 {
+  width: 100px;
+  height: 100px;
+  background-image: url("../images/3.gif");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  animation: move 2s linear infinite;
+  display: flex;
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(200px);
+  }
+}

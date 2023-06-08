@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <script>
+      /*
+        ● Object.is 比较两个值是否严格相等，与『===』行为基本一致（0 与 -0，NaN 与 NaN）
+        ● __proto__可以直接设置对象的原型
+        ● Object.assign 对象的合并，将源对象的所有可枚举属性，复制到目标对象
+
+          浅度克隆（浅拷贝）：
+            js提供的方法基本都是浅拷贝
+              Object.assign
+              Array.from
+              Array.prototype.slice
+              [ ...arr ]  { ..obj }
+
+          深度克隆（深拷贝）
+            JSON.parse(JSON.stringify(obj)) 缺点：1. 不能拷贝函数、日期对象、正则表达式等类型 2. 不能解决循环引用问题
+            structuredClone 缺点：1. 不能拷贝函数
+            手写深度克隆  缺点：1. 不能拷贝函数、日期对象、正则表达式等类型 2. 不能解决循环引用问题
+            lodash js工具函数库 cloneDeep
+      */
+
+      const person = {
+        name: "jack",
+        age: 18,
+        son: {
+          name: "tom",
+          age: 2,
+        },
+        fn() {},
+        date: new Date(),
+      };
+      // 循环引用
+      const obj = {
+        a: person,
+      };
+
+      person.obj = obj;
+      // const newPerson = Object.assign({}, person, { sex: "男" });
+      // newPerson.age++;
+      // console.log(person, newPerson);
+      // newPerson.son.age++;
+      // console.log(person, newPerson);
+
+      // console.log(JSON.stringify(person)); // {"name":"jack","age":18,"son":{"name":"tom","age":2}}
+      // const newPerson = JSON.parse(JSON.stringify(person));
+      // console.log(newPerson);
+      // newPerson.son.age++;
+      // console.log(person, newPerson);
+
+      // 循环引用：a引用b，b引用a
+      // const a = {
+      //   aa: null,
+      // };
+      // const b = {
+      //   bb: a,
+      // };
+      // a.aa = b;
+      // console.log(JSON.stringify(a));
+
+      // const person1 = structuredClone(person);
+      // person1.son.age++;
+      // console.log(person, person1);
+
+      /**
+       * 用来检测数据类型的方法
+       * @param target 检测目标对象
+       * @return 数据类型
+       */
+      function checkType(target) {
+        return Object.prototype.toString.call(target).slice(8, -1);
+      }
+
+      /**
+       * 深度克隆
+       * @param target 需要拷贝的目标对象
+       * @return 新拷贝对象
+       */
+      function cloneDeep(target) {
+        // 1. 检测数据类型
+        const type = checkType(target);
+        // 2. 生成新拷贝对象容器
+        let result = null;
+        if (type === "Array") {
+          result = [];
+        } else if (type === "Object") {
+          result = {};
+        } else {
+          return target;
+        }
+
+        // 3. 拷贝原来对象的所有内容，到新拷贝对象中
+        for (const key in target) {
+          if (target.hasOwnProperty(key)) {
+            result[key] = cloneDeep(target[key]);
+          }
+          // if (Object.hasOwnProperty.call(target, key)) {
+          // }
+        }
+
+        // 4. 返回新拷贝对象
+        return result;
+      }
+
+      const person2 = _.cloneDeep(person);
+      console.log(person2);
+      person2.son.age++;
+      console.log(person, person2);
+    </script>
+  </body>
+</html>

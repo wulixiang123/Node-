@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>request</title>
+  </head>
+  <body>
+    <button class="btn">发送login请求</button>
+    <script src="./axios.min.js"></script>
+    <script src="./request.js"></script>
+    <script>
+      document.querySelector(".btn").onclick = async function () {
+        try {
+          const data = await request({
+            method: "POST",
+            url: "/login",
+            data: {
+              username: "admin1234567",
+              password: "admin1234567",
+            },
+          });
+          console.log("成功", data);
+        } catch (e) {
+          // console.log("失败", e);
+          alert(e);
+        }
+      };
+    </script>
+  </body>
+</html>

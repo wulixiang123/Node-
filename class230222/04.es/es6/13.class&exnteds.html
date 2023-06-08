@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        1. 构造函数 + 原型
+        2. class + extends
+        3. Object.create方法用来对象与对象之间的继承
+      */
+      class Father {
+        constructor(name, age) {
+          this.name = name;
+          this.age = age;
+        }
+        setAge(age) {
+          this.age = age;
+        }
+      }
+
+      // 子类继承父类
+      class Son extends Father {
+        constructor(name, age, sex) {
+          // 当使用extends，constructor函数中必须要调用super函数
+          super(name, age); // super函数就代表父类的constructor方法
+          this.sex = sex;
+        }
+        setSex(sex) {
+          this.sex = sex;
+        }
+        // setAge(age) {
+        //   this.age = age;
+        // }
+      }
+
+      const s = new Son("jack", 18, "男");
+      console.log(s);
+
+      // 1. 构造函数 + 原型 方式实现继承
+      // function Father(name, age) {
+      //   this.name = name;
+      //   this.age = age;
+      // }
+      // Father.prototype.setAge = function (age) {
+      //   this.age = age;
+      // };
+
+      // function Son(name, age, sex) {
+      //   Father.call(this, name, age);
+      //   this.sex = sex;
+      // }
+
+      // Son.prototype.setSex = function (sex) {
+      //   this.sex = sex;
+      // };
+      // Son.prototype.__proto__ = Father.prototype;
+
+      // const s = new Son("jack", 18, "男");
+      // console.log(s);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>登录页面</title>
+    <style>
+      .err-msg {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>登录页面</h1>
+    <form action="/login" method="POST">
+      <label>用户名</label>
+      <input type="text" name="username" class="username" />
+      <span class="err-msg username-err"></span>
+      <br />
+      <label>密码</label>
+      <input type="password" name="password" class="password" />
+      <span class="err-msg password-err"></span>
+      <br />
+      <button type="submit" class="btn">登录</button>
+    </form>
+
+    <script>
+      const btnEl = document.querySelector(".btn");
+      const usernameInputEl = document.querySelector(".username");
+      const passwordInputEl = document.querySelector(".password");
+      const usernameErrEl = document.querySelector(".username-err");
+      const passwordErrEl = document.querySelector(".password-err");
+
+      // username 长度6-18位，只能包含英文、数字和下划线
+      const usernameReg = /^[a-zA-Z0-9_]{6,18}$/;
+      // password 长度8-20位，只能包含英文、数字和下划线
+      const passwordReg = /^[a-zA-Z0-9_]{8,20}$/;
+
+      btnEl.onclick = function (e) {
+        // 1. 阻止默认行为
+        e.preventDefault();
+        // 2. 收集表单数据
+        const username = usernameInputEl.value;
+        const password = passwordInputEl.value;
+        // 3. 表单校验
+        if (!usernameReg.test(username)) {
+          usernameErrEl.innerText = "用户名不符合规范";
+          return;
+        } else {
+          usernameErrEl.innerText = "";
+        }
+
+        if (!passwordReg.test(password)) {
+          passwordErrEl.innerText = "密码不符合规范";
+          return;
+        } else {
+          passwordErrEl.innerText = "";
+        }
+        // 4. 发送请求，登录
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost:3000/login");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(JSON.stringify({ username, password }));
+        xhr.onload = function () {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            const res = JSON.parse(xhr.responseText);
+            if (res.code === 200) {
+              console.log(res.data);
+            } else {
+              if (res.code === 203) {
+                usernameErrEl.innerText = res.message;
+              } else if (res.code === 204) {
+                passwordErrEl.innerText = res.message;
+              }
+            }
+          } else {
+            alert("请求失败了");
+          }
+        };
+      };
+    </script>
+  </body>
+</html>

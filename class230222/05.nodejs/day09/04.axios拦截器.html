@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./01.axios拦截器/axios.min.js"></script>
+    <script>
+      const request = axios.create({
+        baseURL: "http://localhost:3000",
+        timeout: 10000,
+      });
+
+      /*
+        执行顺序：
+          请求拦截器 2 -> 请求拦截器 1 -> 发送请求 -> 响应拦截器 1 -> 响应拦截器 2 -> then
+
+          源码地址：https://github.com/axios/axios/blob/v1.x/lib/core/Axios.js
+
+          1. 创建一个成功的promise对象
+            const promise = Promise.resolve(config);
+
+          2. 执行请求拦截器
+            promise.then(请求拦截器成功回调, 请求拦截器失败回调) 
+              因为promise是成功状态，所以只能触发请求拦截器成功回调（当请求拦截器只设置一个的时候，请求拦截器失败回调就没有意义）
+
+            const promise = Promise.resolve(config);
+
+            promise
+              .then(请求拦截器成功回调2, 请求拦截器失败回调2) 
+              .then(请求拦截器成功回调1, 请求拦截器失败回调1) 
+              .then(发送请求代码, undefined) 
+              .then(响应拦截器成功回调1, 响应拦截器失败回调1) 
+              .then(响应拦截器成功回调2, 响应拦截器失败回调2) 
+
+            return promise
+            
+      */
+
+      // 设置请求拦截器
+      request.interceptors.request.use(
+        (config) => {
+          console.log("request success 111");
+          return config;
+        },
+        () => {
+          console.log("request error 111");
+        }
+      );
+
+      request.interceptors.request.use(
+        (config) => {
+          console.log("request success 222");
+          return Promise.reject();
+          // return config;
+        },
+        () => {
+          console.log("request error 222");
+        }
+      );
+      // 设置响应拦截器
+      request.interceptors.response.use(
+        (response) => {
+          console.log("response success 111");
+          return response;
+        },
+        (error) => {
+          console.log("response error 111");
+          return Promise.reject(error);
+        }
+      );
+
+      request.interceptors.response.use(
+        (response) => {
+          console.log("response success 222");
+          return response;
+        },
+        (error) => {
+          console.log("response error 222");
+          return Promise.reject(error);
+        }
+      );
+
+      request({
+        method: "POST",
+        url: "/login",
+        data: {
+          username: "admin1234567",
+          password: "admin1234567",
+        },
+      })
+        .then(() => {
+          console.log("then");
+        })
+        .catch(() => {
+          console.log("catch");
+        });
+    </script>
+  </body>
+</html>

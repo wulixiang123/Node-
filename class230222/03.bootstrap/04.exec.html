@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap/bootstrap.min.css" />
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+      .header {
+        height: 500px;
+        background-image: linear-gradient(#712cf9, rgba(113, 44, 249, 0.95));
+      }
+      .btn-link {
+        text-decoration: none;
+      }
+
+      .navbar-collapse {
+        flex-grow: 0;
+      }
+
+      .title {
+        margin-top: 80px;
+        font-size: 100px;
+      }
+
+      .text-white-70 {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .list {
+        margin-top: -80px;
+      }
+
+      .list .border {
+        height: 300px !important;
+      }
+
+      .card-img-top {
+        height: 150px;
+      }
+
+      .card {
+        padding: 0;
+      }
+
+      .footer {
+        height: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand text-light" href="#">Bootstrap中文网</a>
+          <button
+            class="navbar-toggler text-light"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="30"
+              height="30"
+              fill="currentColor"
+              class="bi bi-list"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+              />
+            </svg>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <div class="dropdown">
+                  <button
+                    class="btn btn-link dropdown-toggle text-light"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Bootstrap中文文档
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        Bootstrap V3 中文文档
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        Bootstrap V4 中文文档
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        Bootstrap V5 中文文档
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light" aria-current="page" href="#"
+                  >网站实例</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light" href="#">精选模板</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <p class="text-light text-center title">Bootstrap</p>
+      <p class="text-center text-white-70">
+        简洁、直观、强悍的前端开发框架，让web开发更迅速、简单。
+      </p>
+    </div>
+    <div class="container-fluid shadow list">
+      <div class="row h-100 px-4">
+        <div
+          class="border col-sm-12 col-md-4 h-100 d-flex flex-column align-items-center bg-white"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="50"
+            height="50"
+            fill="#0d6efd"
+            class="bi bi-keyboard mt-5 mb-3"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M14 5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h12zM2 4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H2z"
+            />
+            <path
+              d="M13 10.25a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm0-2a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm-5 0A.25.25 0 0 1 8.25 8h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 8 8.75v-.5zm2 0a.25.25 0 0 1 .25-.25h1.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-1.5a.25.25 0 0 1-.25-.25v-.5zm1 2a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm-5-2A.25.25 0 0 1 6.25 8h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 6 8.75v-.5zm-2 0A.25.25 0 0 1 4.25 8h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 4 8.75v-.5zm-2 0A.25.25 0 0 1 2.25 8h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 2 8.75v-.5zm11-2a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm-2 0a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm-2 0A.25.25 0 0 1 9.25 6h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 9 6.75v-.5zm-2 0A.25.25 0 0 1 7.25 6h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 7 6.75v-.5zm-2 0A.25.25 0 0 1 5.25 6h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 5 6.75v-.5zm-3 0A.25.25 0 0 1 2.25 6h1.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-1.5A.25.25 0 0 1 2 6.75v-.5zm0 4a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm2 0a.25.25 0 0 1 .25-.25h5.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-5.5a.25.25 0 0 1-.25-.25v-.5z"
+            />
+          </svg>
+          <p class="fs-4">中文文档</p>
+          <p class="text-center">
+            Bootstrap 各版本中文文档、中文手册。 日常开发必备工具。
+          </p>
+          <div>
+            <button class="btn btn-primary rounded-pill">v3 文档</button>
+            <button class="btn btn-outline-primary rounded-pill">
+              v4 文档
+            </button>
+            <button class="btn btn-outline-primary rounded-pill">
+              v5 文档
+            </button>
+          </div>
+        </div>
+        <div
+          class="border col-sm-12 col-md-4 h-100 d-flex flex-column align-items-center bg-white"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="50"
+            height="50"
+            fill="#0d6efd"
+            class="bi bi-keyboard mt-5 mb-3"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M14 5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h12zM2 4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H2z"
+            />
+            <path
+              d="M13 10.25a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm0-2a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm-5 0A.25.25 0 0 1 8.25 8h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 8 8.75v-.5zm2 0a.25.25 0 0 1 .25-.25h1.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-1.5a.25.25 0 0 1-.25-.25v-.5zm1 2a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm-5-2A.25.25 0 0 1 6.25 8h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 6 8.75v-.5zm-2 0A.25.25 0 0 1 4.25 8h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 4 8.75v-.5zm-2 0A.25.25 0 0 1 2.25 8h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 2 8.75v-.5zm11-2a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm-2 0a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm-2 0A.25.25 0 0 1 9.25 6h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 9 6.75v-.5zm-2 0A.25.25 0 0 1 7.25 6h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 7 6.75v-.5zm-2 0A.25.25 0 0 1 5.25 6h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 5 6.75v-.5zm-3 0A.25.25 0 0 1 2.25 6h1.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-1.5A.25.25 0 0 1 2 6.75v-.5zm0 4a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm2 0a.25.25 0 0 1 .25-.25h5.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-5.5a.25.25 0 0 1-.25-.25v-.5z"
+            />
+          </svg>
+          <p class="fs-4">中文文档</p>
+          <p class="text-center">
+            Bootstrap 各版本中文文档、中文手册。 日常开发必备工具。
+          </p>
+          <div>
+            <button class="btn btn-primary rounded-pill">v3 文档</button>
+            <button class="btn btn-outline-primary rounded-pill">
+              v4 文档
+            </button>
+            <button class="btn btn-outline-primary rounded-pill">
+              v5 文档
+            </button>
+          </div>
+        </div>
+        <div
+          class="border col-sm-12 col-md-4 h-100 d-flex flex-column align-items-center bg-white"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="50"
+            height="50"
+            fill="#0d6efd"
+            class="bi bi-keyboard mt-5 mb-3"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M14 5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h12zM2 4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H2z"
+            />
+            <path
+              d="M13 10.25a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm0-2a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm-5 0A.25.25 0 0 1 8.25 8h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 8 8.75v-.5zm2 0a.25.25 0 0 1 .25-.25h1.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-1.5a.25.25 0 0 1-.25-.25v-.5zm1 2a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm-5-2A.25.25 0 0 1 6.25 8h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 6 8.75v-.5zm-2 0A.25.25 0 0 1 4.25 8h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 4 8.75v-.5zm-2 0A.25.25 0 0 1 2.25 8h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 2 8.75v-.5zm11-2a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm-2 0a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm-2 0A.25.25 0 0 1 9.25 6h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 9 6.75v-.5zm-2 0A.25.25 0 0 1 7.25 6h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 7 6.75v-.5zm-2 0A.25.25 0 0 1 5.25 6h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 5 6.75v-.5zm-3 0A.25.25 0 0 1 2.25 6h1.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-1.5A.25.25 0 0 1 2 6.75v-.5zm0 4a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm2 0a.25.25 0 0 1 .25-.25h5.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-5.5a.25.25 0 0 1-.25-.25v-.5z"
+            />
+          </svg>
+          <p class="fs-4">中文文档</p>
+          <p class="text-center">
+            Bootstrap 各版本中文文档、中文手册。 日常开发必备工具。
+          </p>
+          <div>
+            <button class="btn btn-primary rounded-pill">v3 文档</button>
+            <button class="btn btn-outline-primary rounded-pill">
+              v4 文档
+            </button>
+            <button class="btn btn-outline-primary rounded-pill">
+              v5 文档
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="text-center fs-4 mt-5">Bootstrap相关优质项目推荐</p>
+    <p class="text-center mb-5">
+      这些项目或者是对Bootstrap进行了有益的补充，或者是基于Bootstrap开发的
+    </p>
+    <div class="container-fluid">
+      <div class="row px-2">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 p-4 card-container">
+          <div class="card shadow">
+            <img src="./img.jpg" class="card-img-top border-bottom" alt="img" />
+            <div class="list-group">
+              <h5 class="card-title text-center mt-4">优站精选</h5>
+              <p class="card-text text-center mb-5">
+                Bootstrap 优站精选频道收集了众多基于 Bootstrap
+                构建、设计精美的、有创意的网站。
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 p-4 card-container">
+          <div class="card shadow">
+            <img src="./img.jpg" class="card-img-top border-bottom" alt="img" />
+            <div class="list-group">
+              <h5 class="card-title text-center mt-4">优站精选</h5>
+              <p class="card-text text-center mb-5">
+                Bootstrap 优站精选频道收集了众多基于 Bootstrap
+                构建、设计精美的、有创意的网站。
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 p-4 card-container">
+          <div class="card shadow">
+            <img src="./img.jpg" class="card-img-top border-bottom" alt="img" />
+            <div class="list-group">
+              <h5 class="card-title text-center mt-4">优站精选</h5>
+              <p class="card-text text-center mb-5">
+                Bootstrap 优站精选频道收集了众多基于 Bootstrap
+                构建、设计精美的、有创意的网站。
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 p-4 card-container">
+          <div class="card shadow">
+            <img src="./img.jpg" class="card-img-top border-bottom" alt="img" />
+            <div class="list-group">
+              <h5 class="card-title text-center mt-4">优站精选</h5>
+              <p class="card-text text-center mb-5">
+                Bootstrap 优站精选频道收集了众多基于 Bootstrap
+                构建、设计精美的、有创意的网站。
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 p-4 card-container">
+          <div class="card shadow">
+            <img src="./img.jpg" class="card-img-top border-bottom" alt="img" />
+            <div class="list-group">
+              <h5 class="card-title text-center mt-4">优站精选</h5>
+              <p class="card-text text-center mb-5">
+                Bootstrap 优站精选频道收集了众多基于 Bootstrap
+                构建、设计精美的、有创意的网站。
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 p-4 card-container">
+          <div class="card shadow">
+            <img src="./img.jpg" class="card-img-top border-bottom" alt="img" />
+            <div class="list-group">
+              <h5 class="card-title text-center mt-4">优站精选</h5>
+              <p class="card-text text-center mb-5">
+                Bootstrap 优站精选频道收集了众多基于 Bootstrap
+                构建、设计精美的、有创意的网站。
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 p-4 card-container">
+          <div class="card shadow">
+            <img src="./img.jpg" class="card-img-top border-bottom" alt="img" />
+            <div class="list-group">
+              <h5 class="card-title text-center mt-4">优站精选</h5>
+              <p class="card-text text-center mb-5">
+                Bootstrap 优站精选频道收集了众多基于 Bootstrap
+                构建、设计精美的、有创意的网站。
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 p-4 card-container">
+          <div class="card shadow">
+            <img src="./img.jpg" class="card-img-top border-bottom" alt="img" />
+            <div class="list-group">
+              <h5 class="card-title text-center mt-4">优站精选</h5>
+              <p class="card-text text-center mb-5">
+                Bootstrap 优站精选频道收集了众多基于 Bootstrap
+                构建、设计精美的、有创意的网站。
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 p-4 card-container">
+          <div class="card shadow">
+            <img src="./img.jpg" class="card-img-top border-bottom" alt="img" />
+            <div class="list-group">
+              <h5 class="card-title text-center mt-4">优站精选</h5>
+              <p class="card-text text-center mb-5">
+                Bootstrap 优站精选频道收集了众多基于 Bootstrap
+                构建、设计精美的、有创意的网站。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer"></div>
+    <script src="./bootstrap/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

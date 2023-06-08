@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>axios</title>
+  </head>
+  <body>
+    <button class="btn1">发送 GET 请求</button>
+    <button class="btn2">发送 GET 请求</button>
+    <button class="btn3">发送 POST 请求</button>
+    <button class="btn4">发送 PUT 请求</button>
+    <button class="btn5">发送 PATCH 请求</button>
+    <button class="btn6">发送 DELETE 请求</button>
+
+    <button class="btn7">发送请求</button>
+    <script src="./axios.min.js"></script>
+    <script>
+      document.querySelector(".btn1").onclick = function () {
+        // axios.get(url[, config])  返回值是一个promise对象，请求成功成功状态，请求失败失败状态
+        axios
+          // .get("http://localhost:3000/videos?title=灌篮高手")
+          .get("http://localhost:3000/videos", {
+            params: {
+              title: "灌篮高手",
+            },
+          })
+          .then((response) => {
+            /*
+              {
+                config: { // 请求信息（请求方式、请求地址、请求参数、请求头）
+                  method: 'get',
+                  url: '/xxx',
+                  headers: {},
+                  params: {}, // 查询字符串参数
+                  data: {}, // 请求体参数
+                },
+                data: { // 响应体数据（服务器响应的数据）
+
+                },
+                headers: {}, // 响应头
+                request: , // xhr 对象
+                status: 200, // 响应状态码
+              }
+            */
+            console.log(response.data);
+          })
+          .catch((error) => {
+            /*
+              config // 请求信息（请求方式、请求地址、请求参数、请求头）
+              message // 请求失败的错误信息
+              request // xhr对象
+              response // 内部的内容和请求成功的response是一样的
+            */
+            console.log(error.message);
+          });
+      };
+
+      document.querySelector(".btn2").onclick = async function () {
+        try {
+          const response = await axios.get("/videos/1");
+          console.log(response.data);
+        } catch (error) {
+          console.log(error.message);
+        }
+      };
+
+      document.querySelector(".btn3").onclick = async function () {
+        try {
+          // axios.post(url[, data[, config]])
+          const response = await axios.post("/videos", {
+            title: "喜羊羊和灰太狼",
+            summary: "羊和狼的不得不说的故事",
+          });
+          console.log(response.data);
+        } catch (error) {
+          console.log(error.message);
+        }
+      };
+
+      document.querySelector(".btn4").onclick = async function () {
+        try {
+          // axios.put(url[, data[, config]])
+          const response = await axios.put("http://localhost:3000/videos/4", {
+            title: "乡村爱情故事",
+            summary: "赵四和刘能、谢大脚三人秘密故事",
+          });
+          console.log(response.data);
+        } catch (error) {
+          console.log(error.message);
+        }
+      };
+
+      document.querySelector(".btn5").onclick = async function () {
+        try {
+          // axios.patch(url[, data[, config]])
+          const response = await axios.patch("http://localhost:3000/videos/5", {
+            title: "猫和老鼠",
+          });
+          console.log(response.data);
+        } catch (error) {
+          console.log(error.message);
+        }
+      };
+
+      document.querySelector(".btn6").onclick = async function () {
+        try {
+          // axios.delete(url[, config])
+          const response = await axios.delete("http://localhost:3000/videos/6");
+          console.log(response.data);
+        } catch (error) {
+          console.log(error.message);
+        }
+      };
+
+      document.querySelector(".btn7").onclick = async function () {
+        // try {
+        //   const response = await axios({
+        //     method: "GET",
+        //     url: "http://localhost:3000/videos",
+        //     params: {
+        //       title: 'xxx'
+        //     }
+        //   });
+        //   console.log(response.data);
+        // } catch (error) {
+        //   console.log(error.message);
+        // }
+
+        try {
+          const response = await axios({
+            method: "POST",
+            url: "http://localhost:3000/videos",
+            data: {
+              title: "隔壁老王",
+              summary: "飞檐走壁",
+            },
+          });
+          console.log(response.data);
+        } catch (error) {
+          console.log(error.message);
+        }
+      };
+    </script>
+  </body>
+</html>

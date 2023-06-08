@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var person = {
+        name: "张三",
+        "a-b": 1,
+        age: 18,
+      };
+
+      // person["a-b"];
+      // 默认属性是可读可写
+      person.name = "李四";
+      // 默认属性可以被遍历（枚举）
+      for (const key in person) {
+        console.log(key, person[key]);
+      }
+      // 默认属性被delete删除
+      delete person["a-b"];
+
+      console.log(person);
+
+      Object.defineProperty(person, "name", {
+        configurable: false, // 是否可以被delete删除或重新配置
+        writable: false, // 是否可写
+        enumerable: false, // 是否被forin枚举
+        value: "赵六", // 属性的值
+      });
+
+      delete person.name;
+
+      person.name = "王五";
+
+      for (const key in person) {
+        console.log(key, person[key]);
+      }
+
+      console.log(person);
+
+      Object.defineProperty(person, "age", {
+        // 当你读取 person.age 自动触发 get 方法，get方法的返回值，就是你读取到的值
+        get() {
+          console.log("get");
+          return 18;
+        },
+        // 当你设置 person.age 属性的值，自动触发 set 方法, 将你设置的值作为set方法参数传入
+        set(newVal) {
+          console.log("set", newVal);
+        },
+      });
+
+      console.log(person.age);
+
+      person.age = 20;
+
+      console.log(person.age);
+
+      // Object.defineProperties(person, {
+      //   name: {
+      //     writable: false,
+      //     configurable: false
+      //   },
+      //   age: {
+      //     writable: false,
+      //     configurable: false
+      //   },
+      // })
+    </script>
+  </body>
+</html>

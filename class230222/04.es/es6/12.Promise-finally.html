@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const p1 = new Promise((resolve, reject) => {
+        resolve();
+      });
+
+      /*
+        then 方法管成功
+        catch 方法管失败
+        finally 方法管成功/失败
+          报错就失败
+          返回promise就看这个promise
+          否则就是成功
+      */
+      const p2 = p1.finally(() => {
+        console.log("finally");
+      });
+
+      console.log(p2);
+    </script>
+  </body>
+</html>

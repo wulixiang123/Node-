@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul>
+      <li>111</li>
+      <li>222</li>
+      <li>333</li>
+    </ul>
+    <script>
+      const arr = [1, 2, 3];
+      console.log(arr);
+
+      for (const value of arr) {
+        console.log(value);
+      }
+
+      const str = "hello atguigu";
+      console.dir(str.__proto__);
+      console.log(...str);
+
+      for (const value of str) {
+        console.log(value);
+      }
+
+      function fn() {
+        console.log(arguments);
+        for (const value of arguments) {
+          console.log(value);
+        }
+      }
+      fn(1, 2, 3, 4);
+
+      const liElList = document.querySelectorAll("li");
+      console.log(liElList);
+
+      for (const value of liElList) {
+        console.log(value);
+      }
+
+      const person = {
+        name: "jack",
+      };
+      console.log(person);
+      // Uncaught TypeError: person is not iterable
+      // for (const value of person) {
+      //   console.log(value);
+      // }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // function call(target, ...args) {}
+
+      function fn(...args) {
+        // console.log(arguments);
+        console.log(args); // [1, 2, 3, 4]
+      }
+
+      fn(1, 2, 3, 4);
+
+      // 注意：只能放最后
+      // 接受剩下的函数参数
+      function fn1(a, b, ...args) {
+        console.log(args); // [3, 4]
+      }
+
+      fn1(1, 2, 3, 4);
+
+      const arr = [1, 2, 3, 4];
+      // 将arr数组的值展开，每个值作为函数的参数传入
+      fn1(...arr); // fn1(1, 2, 3, 4);
+    </script>
+  </body>
+</html>

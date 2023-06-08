@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const name = "jack";
+
+      function setName(name) {
+        this.name = name;
+      }
+
+      // 对象的简写
+      const person = {
+        // 属性名和变量名是同名的话，可以省略不写
+        // name: name,
+        name,
+        setName,
+        age: 18,
+        // setAge: function (age) {
+        //   this.age = age;
+        // },
+        // 方法可以省略function
+        setAge(age) {
+          this.age = age;
+        },
+      };
+    </script>
+  </body>
+</html>

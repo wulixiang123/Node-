@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        Function.prototype.call
+        Function.prototype.apply
+        Function.prototype.bind
+
+        Function.__proto__ === Function.prototype
+
+        function fn() {} -> new Function() 
+      */
+
+      function fn() {
+        console.log(this, arguments);
+      }
+
+      var obj = {
+        name: "jack",
+      };
+
+      fn.call(obj, 1, 2, 3, 4, 5);
+      fn.apply(obj, [1, 2, 3, 4, 5]);
+
+      var newFn = fn.bind(obj, 1, 2, 3, 4, 5);
+      newFn(6, 7, 8);
+    </script>
+  </body>
+</html>

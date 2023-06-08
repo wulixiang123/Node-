@@ -1,0 +1,13 @@
+doctype html 
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title 硅谷电影-#{movie.videoTitle}
+    link(rel="stylesheet" href="/css/bootstrap.min.css")
+  body
+    div(class="container")
+      h1 #{movie.videoTitle}
+      //- https://developer.mozilla.org/zh-CN/docs/Web/Media/Autoplay_guide#%E8%87%AA%E5%8A%A8%E6%92%AD%E6%94%BE_%E5%92%8C_%E8%87%AA%E5%8A%A8%E6%92%AD%E6%94%BE%E6%9A%82%E5%81%9C
+      video(src=movie.videoUrl controls autoplay muted="true") 

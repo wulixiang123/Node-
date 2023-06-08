@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>G宠商城</title>
+    <!-- 
+      link放head中引入，防止闪屏 
+      
+        样式: 别人在前面，我们自己的在后面（为了让我们的样式权重更高）
+    -->
+    <link rel="stylesheet" href="./swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./less/index.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-wrap max-w fb">
+        <div class="header-left">
+          <a href="###" class="header-home">G宠首页</a>
+          <a>送至: <span class="header-address">重庆</span></a>
+          <a class="header-certified">G宠就是正品</a>
+        </div>
+        <ul class="header-right flex">
+          <li><a>[登录]</a></li>
+          <li><a>[注册]</a></li>
+          <li>
+            <a class="header-shopcart">
+              购物车(<span class="header-num">0</span>)
+            </a>
+          </li>
+          <li class="header-my-wrap">
+            <a class="header-my"> 我的G宠 </a>
+            <ul class="header-my-list box-shadow">
+              <li><a>我的订单</a></li>
+              <li><a>退换货记录</a></li>
+              <li><a>我的优惠券</a></li>
+              <li><a>我的余额</a></li>
+              <li><a>VIP俱乐部</a></li>
+            </ul>
+          </li>
+          <li class="header-my-wrap">
+            <a class="header-my header-collect">收藏</a>
+            <ul class="header-my-list box-shadow">
+              <li><a>我的收藏</a></li>
+            </ul>
+          </li>
+          <li><a class="header-phone">手机版</a></li>
+          <li><a>问题反馈</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <section>
+      <div class="max-w">
+        <div class="main-top fb">
+          <div class="f-ac">
+            <a class="main-logo">
+              <img src="./images/logo.png" alt="logo" />
+            </a>
+            <a class="main-nav">养宠风尚</a>
+            <a class="main-nav">清仓特价</a>
+          </div>
+          <form class="flex">
+            <input type="text" placeholder="康多乐" class="search-input" />
+            <button class="search-btn">
+              <img src="./images/search.png" alt="search" />
+            </button>
+          </form>
+        </div>
+
+        <div class="flex">
+          <div class="main-navbar">
+            <div class="navbar-header f-ja left-active">
+              <a>狗狗站</a>
+              <a>猫咪站</a>
+            </div>
+            <div class="navbar-item f-ja">
+              <div><a>主粮</a> <a>零食</a></div>
+              <img src="./images/right-icon.png" alt="right-icon" />
+            </div>
+            <div class="navbar-line"></div>
+            <div class="navbar-item f-ja">
+              <div><a>主粮</a> <a>零食</a></div>
+              <img src="./images/right-icon.png" alt="right-icon" />
+            </div>
+            <div class="navbar-line"></div>
+            <div class="navbar-item f-ja">
+              <div><a>主粮</a> <a>零食</a></div>
+              <img src="./images/right-icon.png" alt="right-icon" />
+            </div>
+            <div class="navbar-line"></div>
+            <div class="navbar-item f-ja">
+              <div><a>主粮</a> <a>零食</a></div>
+              <img src="./images/right-icon.png" alt="right-icon" />
+            </div>
+            <div class="navbar-line"></div>
+            <div class="navbar-item f-ja">
+              <div><a>主粮</a> <a>零食</a></div>
+              <img src="./images/right-icon.png" alt="right-icon" />
+            </div>
+          </div>
+          <div class="swiper main-carousel">
+            <!-- 
+              轮播图
+              https://swiperjs.com/get-started#add-swiper-html-layout
+            -->
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="./images/carousel_1.jpg" alt="carousel" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./images/carousel_2.jpg" alt="carousel" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./images/carousel_3.jpg" alt="carousel" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./images/carousel_4.jpg" alt="carousel" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./images/carousel_5.jpg" alt="carousel" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./images/carousel_6.jpg" alt="carousel" />
+              </div>
+            </div>
+            <!-- 分页器（小圆点） -->
+            <div class="swiper-pagination"></div>
+
+            <!-- 左右翻页 -->
+            <!-- <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div> -->
+
+            <!-- 滚动条 -->
+            <!-- <div class="swiper-scrollbar"></div> -->
+          </div>
+        </div>
+
+        <div class="fb sales-wrap">
+          <img src="./images/sales_1.jpg" alt="sales" />
+          <img src="./images/sales_2.jpg" alt="sales" />
+          <img src="./images/sales_3.jpg" alt="sales" />
+          <img src="./images/sales_4.jpg" alt="sales" />
+        </div>
+      </div>
+    </section>
+
+    <section class="goods-list">
+      <div class="max-w">
+        <div class="fb goods-header">
+          <span>猫咪零食</span>
+          <ul class="flex goods-nav">
+            <li><a class="goods-nav-active">罐头湿粮</a></li>
+            <li><a>美味点心</a></li>
+            <li><a>猫草薄荷</a></li>
+            <li><a>肉制零食</a></li>
+          </ul>
+        </div>
+
+        <div class="flex">
+          <div>
+            <a class="goods-item">
+              <img src="./images/goods_1.jpg" alt="goods" />
+            </a>
+            <a class="goods-item">
+              <img src="./images/goods_2.jpg" alt="goods" />
+            </a>
+          </div>
+          <div class="goods-item-wrap">
+            <div class="goods-item">
+              <img src="./images/goods_1_1.jpg" alt="goods" class="goods-img" />
+              <p class="goods-title els">海洋之星 天然猫罐头 混合装 70g*10罐</p>
+              <p class="goods-desc els">
+                英国品牌 高鱼肉含量 天然猫罐头 挑战猫咪挑剔味蕾
+              </p>
+              <p>
+                <span class="goods-price">￥105.00</span>
+                <span class="goods-origin-price">￥128.00</span>
+              </p>
+            </div>
+            <div class="goods-item">
+              <img src="./images/goods_1_1.jpg" alt="goods" class="goods-img" />
+              <p class="goods-title els">海洋之星 天然猫罐头 混合装 70g*10罐</p>
+              <p class="goods-desc els">
+                英国品牌 高鱼肉含量 天然猫罐头 挑战猫咪挑剔味蕾
+              </p>
+              <p>
+                <span class="goods-price">￥105.00</span>
+                <span class="goods-origin-price">￥128.00</span>
+              </p>
+            </div>
+            <div class="goods-item">
+              <img src="./images/goods_1_1.jpg" alt="goods" class="goods-img" />
+              <p class="goods-title els">海洋之星 天然猫罐头 混合装 70g*10罐</p>
+              <p class="goods-desc els">
+                英国品牌 高鱼肉含量 天然猫罐头 挑战猫咪挑剔味蕾
+              </p>
+              <p>
+                <span class="goods-price">￥105.00</span>
+                <span class="goods-origin-price">￥128.00</span>
+              </p>
+            </div>
+            <div class="goods-item">
+              <img src="./images/goods_1_1.jpg" alt="goods" class="goods-img" />
+              <p class="goods-title els">海洋之星 天然猫罐头 混合装 70g*10罐</p>
+              <p class="goods-desc els">
+                英国品牌 高鱼肉含量 天然猫罐头 挑战猫咪挑剔味蕾
+              </p>
+              <p>
+                <span class="goods-price">￥105.00</span>
+                <span class="goods-origin-price">￥128.00</span>
+              </p>
+            </div>
+            <div class="goods-item">
+              <img src="./images/goods_1_1.jpg" alt="goods" class="goods-img" />
+              <p class="goods-title els">海洋之星 天然猫罐头 混合装 70g*10罐</p>
+              <p class="goods-desc els">
+                英国品牌 高鱼肉含量 天然猫罐头 挑战猫咪挑剔味蕾
+              </p>
+              <p>
+                <span class="goods-price">￥105.00</span>
+                <span class="goods-origin-price">￥128.00</span>
+              </p>
+            </div>
+            <div class="goods-item">
+              <img src="./images/goods_1_1.jpg" alt="goods" class="goods-img" />
+              <p class="goods-title els">海洋之星 天然猫罐头 混合装 70g*10罐</p>
+              <p class="goods-desc els">
+                英国品牌 高鱼肉含量 天然猫罐头 挑战猫咪挑剔味蕾
+              </p>
+              <p>
+                <span class="goods-price">￥105.00</span>
+                <span class="goods-origin-price">￥128.00</span>
+              </p>
+            </div>
+            <div class="goods-item">
+              <img src="./images/goods_1_1.jpg" alt="goods" class="goods-img" />
+              <p class="goods-title els">海洋之星 天然猫罐头 混合装 70g*10罐</p>
+              <p class="goods-desc els">
+                英国品牌 高鱼肉含量 天然猫罐头 挑战猫咪挑剔味蕾
+              </p>
+              <p>
+                <span class="goods-price">￥105.00</span>
+                <span class="goods-origin-price">￥128.00</span>
+              </p>
+            </div>
+            <div class="goods-item">
+              <img src="./images/goods_1_1.jpg" alt="goods" class="goods-img" />
+              <p class="goods-title els">海洋之星 天然猫罐头 混合装 70g*10罐</p>
+              <p class="goods-desc els">
+                英国品牌 高鱼肉含量 天然猫罐头 挑战猫咪挑剔味蕾
+              </p>
+              <p>
+                <span class="goods-price">￥105.00</span>
+                <span class="goods-origin-price">￥128.00</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="brand-wrap">
+          <div class="flex">
+            <a class="f-c"><img src="./images/brand_1.png" alt="brand" /></a>
+            <a class="f-c"><img src="./images/brand_2.jpg" alt="brand" /></a>
+            <a class="f-c"><img src="./images/brand_3.jpg" alt="brand" /></a>
+            <a class="f-c"><img src="./images/brand_4.jpg" alt="brand" /></a>
+            <a class="f-c"><img src="./images/brand_5.jpg" alt="brand" /></a>
+            <a class="f-c"><img src="./images/brand_6.jpg" alt="brand" /></a>
+            <a class="f-c"><img src="./images/brand_4.jpg" alt="brand" /></a>
+            <a class="f-c"><img src="./images/brand_5.jpg" alt="brand" /></a>
+            <a class="f-c"><img src="./images/brand_6.jpg" alt="brand" /></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- 防止阻塞页面渲染，让先渲染DOM元素，在加载js -->
+    <script src="./swiper/swiper-bundle.min.js"></script>
+    <script src="./js/index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const person = {
+        name: "jack",
+        age: 18,
+        sex: "男",
+      };
+      /*
+        浅拷贝 和 深拷贝 
+                   JSON.parse(JSON.stringify())
+      */
+      // 将person对象中的所有属性（可枚举属性）展开到一个新对象中
+      // 新对象就会有person对象的所有属性
+      const person1 = { ...person }; // 浅拷贝
+
+      console.log(person1);
+
+      const arr = [1, 2, 3, 4];
+      console.log(...arr);
+    </script>
+  </body>
+</html>

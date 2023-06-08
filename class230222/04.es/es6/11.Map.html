@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        对象属性名只能是：string 和 symbol
+        对象属性值可以是任意类型
+
+        Map容器类似于对象，存储key-value结构，不同的是key可以是任意类型
+
+        WeakMap 
+          1. key只能是引用数据类型
+          2. 存储的数据是弱引用，一旦key外部没有引用，就会自动消失（回收）
+      */
+      const m = new Map();
+      console.log(m);
+
+      const arr = [1, 2, 3, 4];
+
+      m.set("name", "jack");
+      m.set(true, false);
+      m.set(1111, 2222);
+      m.set({ name: "rose" }, 3333);
+      m.set(arr, { age: 18 });
+
+      m.delete("name");
+      m.delete(arr);
+
+      console.log(m.get(1111));
+
+      const wm = new WeakMap();
+      // wm.set("name", "jack"); // Uncaught TypeError: Invalid value used as weak map key
+      // wm.set({ name: "jack" }, { name: "rose" });
+
+      const person = { name: "jack" };
+      wm.set(person, { name: "rose" });
+      console.log(wm);
+    </script>
+  </body>
+</html>

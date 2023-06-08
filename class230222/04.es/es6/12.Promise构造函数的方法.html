@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        1. Promise.resolve() 主要用来快速创建成功状态的promise对象(也可以返回失败状态的promise对象)
+        2. Promise.reject() 快速创建失败状态的promise对象
+        3. Promise.all([promise1, promise2, ...]) 
+          只有所有promise对象都变成成功状态，返回值promise对象才是成功状态
+          只要有一个promise对象变成失败状态，返回值promise对象就是失败状态
+          总结：只有所有成功才成功，只要有一个失败就失败
+          应用：同时发送多个请求
+        4. Promise.allSettled([promise1, promise2, ...])
+          等所有promise对象状态发生变化，返回值promise就会成功
+
+          应用：同时发送多个请求
+        5. Promise.race([promise1, promise2, ...])
+          只要第一个状态发生变化（成功/失败）的promise对象
+          应用：为请求设置超时时间
+        6. Promise.any([promise1, promise2, ...])
+          只要第一个成功状态的promise对象
+      */
+      // const p1 = new Promise(resolve => resolve())
+
+      const p2 = Promise.resolve(111);
+      console.log(p2);
+
+      const p3 = Promise.resolve(new Promise((resolve, reject) => reject()));
+      console.log(p3);
+
+      const p4 = Promise.reject();
+      console.log(p4);
+
+      const p5 = Promise.reject(Promise.resolve());
+      console.log(p5);
+
+      function getAData() {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            // console.log("数据a");
+            // resolve("数据a");
+            console.log("失败原因aaa~~");
+            reject("失败原因aaa~~");
+          }, 1000);
+        });
+      }
+      function getBData() {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            console.log("数据b");
+            resolve("数据b");
+          }, 2000);
+        });
+      }
+      function getCData() {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            console.log("数据c");
+            resolve("数据c");
+          }, 3000);
+        });
+      }
+
+      // const p = Promise.all([getAData(), getBData(), getCData()]);
+      // console.log(p);
+
+      // const p = Promise.allSettled([getAData(), getBData(), getCData()]);
+      // console.log(p);
+      // p.then((values) => {
+      //   console.log(values.filter((value) => value.status === "fulfilled"));
+      // });
+
+      // const p = Promise.race([getAData(), getBData(), getCData()]);
+      const p = Promise.any([getAData(), getBData(), getCData()]);
+      console.log(p);
+    </script>
+  </body>
+</html>

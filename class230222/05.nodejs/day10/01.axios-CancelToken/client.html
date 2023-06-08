@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button class="btn1">发送请求</button>
+    <button class="btn2">取消请求</button>
+    <script src="../../day09/01.axios拦截器/axios.min.js"></script>
+    <script>
+      const CancelToken = axios.CancelToken;
+
+      let cancel = null;
+
+      document.querySelector(".btn1").onclick = async function () {
+        try {
+          const res = await axios.get("http://localhost:3000/testCancel", {
+            cancelToken: new CancelToken((c) => {
+              // c 就是取消请求的方法
+              cancel = c;
+            }),
+          });
+          console.log(res);
+        } catch (e) {
+          console.log(e);
+        }
+      };
+
+      document.querySelector(".btn2").onclick = function () {
+        cancel(); // 取消请求
+      };
+    </script>
+  </body>
+</html>

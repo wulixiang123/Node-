@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        1. 发送请求获取数据a
+        2. 等上一个请求完成，发送请求获取数据b
+        3. 等上一个请求完成，发送请求获取数据c
+
+        用定时器模拟发送请求
+      */
+
+      // 回调地狱问题：层层嵌套回调函数
+      // setTimeout(() => {
+      //   console.log("数据a");
+      //   setTimeout(() => {
+      //     console.log("数据b");
+      //     setTimeout(() => {
+      //       console.log("数据c");
+      //     }, 1000);
+      //   }, 1000);
+      // }, 1000);
+
+      /*
+        Promise：为了更好的解决回调地狱问题。异步编程更好的方案。
+
+        1. 如何创建Promise
+          const promise = new Promise(executor);
+            new调用Promise，接受一个函数作为参数，
+            这个函数会立即同步调用,（Promise内部调用这个函数，调用函数会传递两个参数：resolve 和 reject）
+            返回值是一个promise对象
+        
+        2. promise实例对象，内部有三种状态
+          - pending 初始化状态（刚刚创建）
+          - resolved / fulfilled 成功状态
+          - rejected 失败状态（失败状态没有处理，会有一个报错）
+          状态只能被改变一次，后面没有效果了
+            resolve: pending -> resolved
+            reject: pending -> rejected
+            报错: pending -> rejected
+
+        3. promise实例对象, 内部有结果值
+          resolve(参数) 参数就是成功结果值（成功数据）
+          reject(参数) 参数就是失败结果值（失败原因）
+          报错错误原因 就是失败结果值（失败原因）
+
+          function Promise(executor) {
+            executor(resolve, reject)
+            function resolve() {}
+            function reject() {}
+          }
+        
+        4. promise实例对象方法
+          Promise.prototype.then()
+          Promise.prototype.catch()
+          Promise.prototype.finally()
+      */
+
+      const promise = new Promise((resolve, reject) => {
+        /*
+          resolve() 调用resolve函数，将promise对象状态由pending改为resolved
+          reject() 调用reject函数，将promise对象状态由pending改为rejected
+        */
+        // console.log(111);
+        // resolve(111);
+        // resolve([111, 222, 333]);
+        setTimeout(() => {
+          resolve(111);
+          // reject("网络故障");
+        }, 2000);
+        // console.log(a);
+        // throw new Error("网络故障");
+      });
+
+      console.log(promise);
+
+      /*
+        什么样的函数叫做回调函数？
+          你定义的函数，但是你没有调用，最终它被（其他）调用了
+      */
+
+      // promise.then(
+      //   // 成功的回调函数
+      //   (value) => {
+      //     // value 代表 promise的结果值：成功结果值
+      //     console.log("then 成功回调函数触发了", value);
+      //   },
+      //   // 失败的回调函数
+      //   (reason) => {
+      //     // reason 代表 promise的结果值：失败原因
+      //     console.log("then 失败回调函数触发了", reason);
+      //   }
+      // );
+
+      /*
+        promise支持链式调用的
+          a.b().c().d().b()
+          说明 then 方法的返回值是一个新的 promise 对象
+            新的 promise 对象的状态？结果值？
+
+            现象：
+              1. 第一个promise不管成功还是失败，第二个promise都是成功的
+              2. 第一个promise不管成功还是失败，第二个promise回调函数中报错了，返回失败的
+              3. 第一个promise不管成功还是失败，第二个promise回调函数有返回值（返回值是promise），
+                  返回值promise的状态就是第二个promise的状态
+
+            总结： then 方法返回值promise，如何判断这个promise对象的状态？
+              看then方法触发的某个回调函数，看某个回调函数的执行结果
+              - 如果这个回调函数执行报错了，那么then 方法返回值promise就是失败状态
+              - 如果这个回调函数没有返回值或没有返回promise对象，那么then 方法返回值promise就是成功状态
+              - 如果这个回调函数有返回值并且返回值就是一个promise对象，那么 then 方法返回值promise就看返回值promise对象状态
+
+              then 方法返回值promise的结果值
+
+
+              then方法的回调函数是异步调用的
+      */
+
+      const promise2 = promise.then(
+        (value) => {
+          console.log("then 111 成功回调函数触发了", value);
+          // throw new Error("出错了~");
+          // const newPromise = new Promise((resolve) => {
+          //   reject();
+          // });
+          // return newPromise;
+          return 1111;
+        },
+        (reason) => {
+          console.log("then 111 失败回调函数触发了", reason);
+          // throw new Error("出错了~");
+        }
+      );
+
+      console.log(promise2);
+
+      // const promise3 = promise2.then(
+      //   (value) => {
+      //     console.log("then 222 成功回调函数触发了", value);
+      //   },
+      //   (reason) => {
+      //     console.log("then 222 失败回调函数触发了", reason);
+      //   }
+      // );
+
+      // const promise4 = promise3.then(
+      //   (value) => {
+      //     console.log("then 333 成功回调函数触发了", value);
+      //   },
+      //   (reason) => {
+      //     console.log("then 333 失败回调函数触发了", reason);
+      //   }
+      // );
+
+      // promise
+      //   .then(
+      //     (value) => {
+      //       console.log("then 111 成功回调函数触发了", value);
+      //     },
+      //     (reason) => {
+      //       console.log("then 111 失败回调函数触发了", reason);
+      //     }
+      //   )
+      //   .then(
+      //     (value) => {
+      //       console.log("then 222 成功回调函数触发了", value);
+      //     },
+      //     (reason) => {
+      //       console.log("then 222 失败回调函数触发了", reason);
+      //     }
+      //   )
+      //   .then(
+      //     (value) => {
+      //       console.log("then 333 成功回调函数触发了", value);
+      //     },
+      //     (reason) => {
+      //       console.log("then 333 失败回调函数触发了", reason);
+      //     }
+      //   );
+    </script>
+  </body>
+</html>

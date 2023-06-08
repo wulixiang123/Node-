@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 2. class + extends 方式实现继承
+      // 类
+      class Person {
+        // 类的静态方法（给类使用的，不是给实例对象使用）
+        static all() {
+          console.log("all");
+        }
+        // 类的静态属性
+        static test = "test";
+
+        // 类的构造方法
+        // 当new调用类时，会自动执行constructor函数
+        // 当new调用类传递的参数，会传入constructor函数（当new调用类传递了几个参数，constructor函数就能接受几个参数）
+        // 用来定义实例上属性
+        constructor(name, age) {
+          // 类中函数的this，指向类的实例对象
+          this.name = name;
+          this.age = age;
+        }
+
+        // 用来定义原型上的公共方法
+        setName(name) {
+          this.name = name;
+        }
+
+        setAge(age) {
+          this.age = age;
+        }
+      }
+
+      // Person.all = function () {
+      //   console.log("all");
+      // };
+
+      const p1 = new Person("jack", 18);
+      console.log(p1);
+      console.dir(Person);
+
+      Person.all();
+
+      // 1. 构造函数 + 原型 方式实现继承
+      // function Person(name, age) {
+      //   // 定义实例对象上的属性
+      //   this.name = name;
+      //   this.age = age;
+
+      //   // 方法建议定义在原型对象上
+      //   // this.setName = function (name) {
+      //   //   this.name = name;
+      //   // };
+      // }
+
+      // // 原型上：定义实例对象上的公共方法
+      // Person.prototype.setAge = function (age) {
+      //   this.age = age;
+      // };
+
+      // const p = new Person("jack", 18);
+      // console.log(p);
+
+      // p.setName("rose");
+      // p.setAge(20);
+      // console.log(p);
+
+      // const p2 = new Person("jack", 18);
+      // console.log(p2);
+    </script>
+  </body>
+</html>

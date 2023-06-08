@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        ● 必须用 var 声明变量，不允许使用未声明的变量
+        ● 禁止自定义的函数中的 this 指向 window
+        ● 创建 eval 作用域
+        ● 对象不能有重名的属性（Chrome 已经修复了这个 Bug，IE 还会出现）
+        ● 函数不能有重复的形参
+      */
+      "use strict";
+
+      // 必须用 var 声明变量，不允许使用未声明的变量
+      var a = 1;
+
+      function fn() {
+        var b = 2;
+        // 禁止自定义的函数中的 this 指向 window
+        console.log(this); // undefined
+      }
+
+      fn();
+
+      // 创建 eval 作用域
+      eval("var c = 3; console.log(c);");
+
+      // console.log(c); // Uncaught ReferenceError: c is not defined
+
+      // console.log(window.b);
+
+      var obj = {
+        a: 1,
+        a: 2,
+      };
+
+      console.log(obj);
+
+      // function fn1(a, a) {
+      //   console.log(a);
+      // }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul class="list">
+      <li>姓名:</li>
+      <li>年龄:</li>
+      <li>性别:</li>
+      <li>爱好:</li>
+    </ul>
+    <script>
+      const person = {
+        name: "吴明",
+        age: 30,
+        sex: "女",
+        hobby: "男",
+      };
+
+      const { name, age, sex, hobby } = person;
+
+      // const str = '\
+      //   <li>姓名:' + name + '</li>\
+      //   <li>年龄:</li>\
+      //   <li>性别:</li>\
+      //   <li>爱好:</li>\
+      // '
+
+      const str = `
+        <li>"姓名": ${name}</li>
+        <li>'年龄': ${age}</li>
+        <li>"性别': ${sex}</li>
+        <li>爱好: ${hobby}</li>
+      `;
+
+      document.querySelector(".list").innerHTML = str;
+    </script>
+  </body>
+</html>

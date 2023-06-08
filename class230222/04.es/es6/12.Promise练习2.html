@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        1. 发送请求获取数据a
+        2. 等上一个请求完成，发送请求获取数据b
+        3. 等上一个请求完成，发送请求获取数据c
+
+        用定时器模拟发送请求
+      */
+
+      function getAData() {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            console.log("数据a");
+            resolve("数据a");
+          }, 1000);
+        });
+      }
+      function getBData() {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            console.log("数据b");
+            resolve("数据b");
+          }, 1000);
+        });
+      }
+      function getCData() {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            console.log("数据c");
+            resolve("数据c");
+          }, 1000);
+        });
+      }
+
+      // getAData()
+      //   .then(() => {
+      //     return getBData();
+      //   })
+      //   .then(() => getCData());
+
+      getAData().then(getBData).then(getCData);
+
+      // const p1 = new Promise((resolve) => {
+      //   setTimeout(() => {
+      //     console.log("数据a");
+      //     resolve("数据a");
+      //   }, 1000);
+      // })
+      //   .then(() => {
+      //     return new Promise((resolve) => {
+      //       setTimeout(() => {
+      //         console.log("数据b");
+      //         resolve("数据b");
+      //       }, 1000);
+      //     });
+      //   })
+      //   .then(() => {
+      //     return new Promise((resolve) => {
+      //       setTimeout(() => {
+      //         console.log("数据c");
+      //         resolve("数据c");
+      //       }, 1000);
+      //     });
+      //   });
+    </script>
+  </body>
+</html>

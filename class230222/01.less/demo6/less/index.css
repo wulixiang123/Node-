@@ -1,0 +1,109 @@
+/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */
+html,
+body,
+p,
+ol,
+ul,
+li,
+dl,
+dt,
+dd,
+blockquote,
+figure,
+fieldset,
+legend,
+textarea,
+pre,
+iframe,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+ul {
+  list-style: none;
+}
+button,
+input,
+select {
+  margin: 0;
+}
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+img,
+video {
+  height: auto;
+  max-width: 100%;
+}
+iframe {
+  border: 0;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td,
+th {
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+}
+/*
+  问题：
+    1. 生成css体积比较大（选择器太多了）
+    2. css解析性能不好
+      扩展：
+        CSS选择器是从右往左解析
+        选择器性能开销：id > class 
+*/
+#app {
+  width: 100%;
+  height: 100%;
+}
+.header {
+  height: 60px;
+  background-color: lightpink;
+}
+.main {
+  height: calc(100% - 60px);
+  display: flex;
+}
+.sidebar {
+  width: 150px;
+  background-color: pink;
+  height: 100%;
+}
+.main-wrap {
+  flex: 1;
+  height: 100%;
+}
+.content {
+  min-height: calc(100% - 100px);
+  background-color: hotpink;
+}
+.footer {
+  height: 100px;
+  background-color: deeppink;
+}

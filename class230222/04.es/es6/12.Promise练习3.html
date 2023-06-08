@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        JS 事件循环（轮询）机制：异步代码执行机制
+          
+          JS主线程从上到下依次执行所有代码，遇到同步代码依次执行，遇到异步代码，交给浏览器相应管理模块去处理
+            比如：
+              1. JS主线程遇到定时器代码，将定时器功能交给浏览器定时器管理模块，
+                它负责计时，到点将定时器回调函数添加到异步回调队列去
+              2. JS主线程遇到绑定事件代码，将绑定事件功能交给浏览器DOM事件管理模块，
+                它负责绑定事件，监听用户行为，一旦触发事件就将DOM事件回调函数添加到异步回调队列去
+        
+        JS主线程异步代码交给浏览器相应管理模块去处理，立即执行剩下的代码
+        等JS主线程所有代码全部执行完毕，开启事件轮询，开始执行异步代码（异步回调函数），依次取出，同步执行（先进先出）
+        JS主线程将异步队列中所有异步回调函数全部执行完毕，过一会又重复这个流程
+
+
+        异步队列分为两种：宏任务队列和微任务队列
+        简单理解：JS主线程开启事件轮询，先执行微任务队列中回调函数，再执行宏任务队列中回调函数
+          宏任务: 定时器回调函数、DOM事件回调函数、ajax请求回调函数
+          微任务: Promise.then/catch/finally回调函数、MutationObserver、queueMicrotask
+        具体规则：
+          先执行微任务队列中回调函数，等所有微任务执行完了
+          再取出执行宏任务队列中第一个回调函数，继续执行微任务队列中回调函数，等所有微任务执行完了
+          再取出执行宏任务队列中第一个回调函数，继续执行微任务队列中回调函数，等所有微任务执行完了
+          以此往复
+      */
+      
+      console.log("1");
+      setTimeout(() => {
+        console.log("2");
+        Promise.resolve().then(() => {
+          console.log("3");
+        });
+      }, 0);
+      setTimeout(() => {
+        console.log("4");
+        Promise.resolve().then(() => {
+          console.log("5");
+        });
+      }, 0);
+      Promise.resolve().then(() => {
+        console.log("6");
+      });
+      console.log("7");
+    </script>
+  </body>
+</html>

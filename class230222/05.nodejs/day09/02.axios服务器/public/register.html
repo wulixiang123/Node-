@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>注册页面</title>
+    <style>
+      .error-message {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>注册页面</h1>
+    <form action="/register" method="POST">
+      <label>用户名</label>
+      <!-- 
+        name属性：当你提交表单参数名称就是name
+       -->
+      <input type="text" name="username" class="username" />
+      <span class="error-message username-error"></span>
+      <br />
+      <label>密码</label>
+      <input type="password" name="password" class="password" />
+      <span class="error-message password-error"></span>
+      <br />
+      <label>确认密码</label>
+      <input type="password" name="rePassword" class="rePassword" />
+      <span class="error-message rePassword-error"></span>
+      <br />
+      <button type="submit" class="btn">注册</button>
+    </form>
+    <script>
+      const btnEl = document.querySelector(".btn");
+      const usernameInputEl = document.querySelector(".username");
+      const passwordInputEl = document.querySelector(".password");
+      const rePasswordInputEl = document.querySelector(".rePassword");
+
+      const usernameErrorEl = document.querySelector(".username-error");
+      const passwordErrorEl = document.querySelector(".password-error");
+      const rePasswordErrorEl = document.querySelector(".rePassword-error");
+
+      // username 长度6-18位，只能包含英文、数字和下划线
+      const usernameReg = /^[a-zA-Z0-9_]{6,18}$/;
+      // password 长度8-20位，只能包含英文、数字和下划线
+      const passwordReg = /^[a-zA-Z0-9_]{8,20}$/;
+
+      btnEl.onclick = function (event) {
+        // 1. 阻止默认行为（阻止表单提交行为）
+        event.preventDefault();
+
+        // 2. 获取用户填写的表单数据
+        const username = usernameInputEl.value;
+        const password = passwordInputEl.value;
+        const rePassword = rePasswordInputEl.value;
+
+        console.log(username, password, rePassword);
+        // 3. 需要对用户数据进行正则校验
+        // if (!usernameReg.test(username)) {
+        //   usernameErrorEl.innerText = "用户名不符合规范";
+        //   return;
+        // }
+
+        // if (!passwordReg.test(password)) {
+        //   usernameErrorEl.innerText = "";
+        //   passwordErrorEl.innerText = "密码不符合规范";
+        //   return;
+        // }
+
+        // if (password !== rePassword) {
+        //   usernameErrorEl.innerText = "";
+        //   passwordErrorEl.innerText = "";
+        //   rePasswordErrorEl.innerText = "两次密码输入不一致";
+        //   return;
+        // }
+
+        // usernameErrorEl.innerText = "";
+        // passwordErrorEl.innerText = "";
+        // rePasswordErrorEl.innerText = "";
+
+        if (!usernameReg.test(username)) {
+          usernameErrorEl.innerText = "用户名不符合规范";
+          return;
+        } else {
+          usernameErrorEl.innerText = "";
+        }
+
+        if (!passwordReg.test(password)) {
+          passwordErrorEl.innerText = "密码不符合规范";
+          return;
+        } else {
+          passwordErrorEl.innerText = "";
+        }
+
+        if (password !== rePassword) {
+          rePasswordErrorEl.innerText = "两次密码输入不一致";
+          return;
+        } else {
+          rePasswordErrorEl.innerText = "";
+        }
+
+        // 4. 发送请求，请求注册
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/register");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(JSON.stringify({ username, password }));
+        xhr.onload = function () {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            // 请求成功
+            // 请求成功不代表功能成功，请求成功功能可能是失败的
+            const res = JSON.parse(xhr.responseText);
+            if (res.code === 200) {
+              // 功能成功
+              console.log(res.data);
+            } else {
+              // 功能失败
+              usernameErrorEl.innerText = res.message;
+            }
+          } else {
+            // 请求失败
+            alert("请求失败");
+          }
+        };
+      };
+    </script>
+  </body>
+</html>

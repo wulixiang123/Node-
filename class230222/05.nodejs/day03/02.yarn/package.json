@@ -1,0 +1,14 @@
+{
+  "name": "02.yarn",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "eslint": "^8.39.0",
+    "webpack": "^5.81.0"
+  }
+}

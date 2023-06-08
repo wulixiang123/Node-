@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+      then
+      catch
+    */
+      const p1 = new Promise((resolve, reject) => {
+        reject();
+      });
+
+      // p1
+      //   // 处理成功状态
+      //   .then(() => {
+      //     console.log("then 1");
+      //   })
+      //   // 处理失败状态
+      //   .catch(() => {
+      //     console.log("catch 1");
+      //   })
+      //   // 处理成功状态
+      //   .then(() => {
+      //     console.log("then 2");
+      //   })
+      //   // 处理失败状态
+      //   .catch(() => {
+      //     console.log("catch 2");
+      //   });
+
+      p1
+        .then(() => {
+          console.log("1");
+        })
+        .then(() => {
+          console.log("2");
+        })
+        .catch(() => {
+          console.log("3");
+        })
+        .catch(() => {
+          console.log("4");
+        })
+        .then(() => {
+          console.log("5");
+        })
+        .then(() => {
+          console.log("6");
+        })
+        .catch(() => {
+          console.log("7");
+        });
+    </script>
+  </body>
+</html>

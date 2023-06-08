@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      async function asyncFn() {
+        try {
+          // try 中放入可能出错的代码
+          // 一旦代码出错，中断try剩下代码执行，直接来到catch
+          console.log(1);
+          const result1 = await new Promise((resolve, reject) => {
+            setTimeout(() => {
+              reject("失败了");
+            }, 1000);
+          });
+          console.log(2);
+          const result2 = await new Promise((resolve) => {
+            setTimeout(() => {
+              resolve("数据b");
+            }, 1000);
+          });
+          console.log(3);
+          const result3 = await new Promise((resolve) => {
+            setTimeout(() => {
+              resolve("数据c");
+            }, 1000);
+          });
+
+          console.log(result1, result2, result3);
+        } catch (error) {
+          alert(error);
+        }
+      }
+
+      asyncFn();
+      // asyncFn().catch((reason) => alert(reason));
+    </script>
+  </body>
+</html>

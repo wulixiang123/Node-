@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cors</title>
+  </head>
+  <body>
+    <button class="btn1">发送 GET 请求</button>
+    <button class="btn2">发送 POST 请求</button>
+    <button class="btn3">发送 POST 请求</button>
+    <script>
+      // CORS
+      // 1. 支持所有请求方式 2. 设置简单（只需要服务器设置）
+      document.querySelector(".btn1").onclick = function () {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://localhost:3000/testCORS");
+        xhr.send();
+        xhr.onload = function () {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            console.log(xhr.responseText);
+          } else {
+            console.log("请求失败");
+          }
+        };
+      };
+
+      document.querySelector(".btn2").onclick = function () {
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost:3000/testCORS");
+        xhr.send();
+        xhr.onload = function () {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            console.log(xhr.responseText);
+          } else {
+            console.log("请求失败");
+          }
+        };
+      };
+
+      document.querySelector(".btn3").onclick = function () {
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost:3000/testCORS");
+        xhr.setRequestHeader("token", "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+        xhr.send();
+        xhr.onload = function () {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            console.log(xhr.responseText);
+          } else {
+            console.log("请求失败");
+          }
+        };
+      };
+    </script>
+  </body>
+</html>

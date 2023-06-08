@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // set容器特点：内部的值必须是唯一的
+      const s1 = new Set();
+      console.log(s1);
+      s1.add(1);
+      s1.add(true);
+      s1.add("hello");
+      s1.add({ name: "jack" });
+      s1.add([1, 2, 3]);
+      s1.add(1);
+      s1.add([1, 2, 3]);
+
+      // 不能通过下标读取数据
+      console.log(s1[0], s1[1]);
+
+      // 遍历使用数据
+      s1.forEach((item) => {
+        console.log(item);
+      });
+      // 判断数据是否存在
+      console.log(s1.has(2));
+      // 删除数据
+      s1.delete(1);
+
+      const s2 = new Set([1, 2, 3, 4, true, {}, []]);
+      console.log(s2);
+
+      // 数组去重
+      const arr = [1, 3, 1, 5, 7, 2, 3, 2, 7, 6];
+      /*
+        [...new Set(arr)]
+          const s = new Set(arr) 将arr转化为set容器，数组元素就自动去重了
+          [...s] 将set容器转化为数组
+      */
+      console.log([...new Set(arr)]);
+
+      const ws = new WeakSet();
+      // WeakSet只能存储对象数据
+      // ws.add(1); // Uncaught TypeError: Invalid value used in weak set
+      // ws.add(true); // Uncaught TypeError: Invalid value used in weak set
+      // ws.add("string"); // Uncaught TypeError: Invalid value used in weak set
+      // 存储的数据是弱引用。一旦存储的值外面没有引用，这个值会自动消失（自动被垃圾回收机制机制）
+      ws.add({});
+      ws.add({ name: "jack" });
+      ws.add([1, 2]);
+      ws.add(function () {});
+
+      const person = { name: "jack", age: 18 };
+      ws.add(person);
+
+      console.log(ws);
+    </script>
+  </body>
+</html>

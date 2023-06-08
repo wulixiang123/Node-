@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const p1 = new Promise((resolve, reject) => {
+        resolve(111);
+      });
+
+      p1.then(
+        (value) => {
+          console.log(1, value);
+          return 333;
+        },
+        (reason) => {
+          console.log(2, reason);
+        }
+      )
+        .then(
+          (value) => {
+            console.log(3, value);
+            return 555;
+            // throw new Error();
+          },
+          (reason) => {
+            console.log(4, reason);
+            return new Promise((reject) => {
+              reject();
+            });
+          }
+        )
+        .then(
+          (value) => {
+            console.log(5, value);
+            return new Promise((resolve) => {
+              resolve(777);
+            });
+          },
+          (reason) => {
+            console.log(6, reason);
+            return new Promise((resolve) => {
+              resolve();
+            });
+          }
+        )
+        .then(
+          (value) => {
+            console.log(7, value);
+          },
+          (reason) => {
+            console.log(8, reason);
+          }
+        );
+
+      console.log(9);
+    </script>
+  </body>
+</html>

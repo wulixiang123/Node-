@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        1. 二进制和八进制
+        ES6 提供了二进制和八进制数值的新的写法，分别用前缀0b和0o表示。
+        2. Number.isFinite() 与 Number.isNaN()
+        ● Number.isFinite() 用来检查一个数值是否为有限的
+        ● Number.isNaN() 用来检查一个值是否为NaN
+        3. Number.parseInt() 与 Number.parseFloat()
+        ES6 将全局方法 parseInt 和 parseFloat，移植到 Number 对象上面，使用不变。
+        4. Math.trunc()
+        用于去除一个数的小数部分，返回整数部分。
+        5. Number.isInteger()
+        用来判断一个数值是否为整数
+      */
+      console.log(0b10101);
+      console.log(0o566);
+      console.log(1 | 2); // 3
+      console.log(1 & 2); // 0
+
+      console.log(Number.isFinite(1));
+      console.log(Number.isFinite(-Infinity));
+
+      console.log(Number.isNaN(NaN));
+      // function isNaN(number) {
+      //   return number !== number;
+      // }
+      console.log(Number.parseInt(`10.2sdmjaikm`));
+      console.log(Number.parseFloat(`10.2sdmjaikm`));
+
+      console.log(Math.trunc(10.2));
+
+      console.log(Number.isInteger(10.2));
+    </script>
+  </body>
+</html>
